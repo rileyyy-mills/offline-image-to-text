@@ -6,9 +6,12 @@
 </p>
 
 ## Credits
+
 This project was forked from the [Cap ML](https://github.com/bendyworks/cap-ml) plugin written by Vennela Kodali. It was refactored and converted to Capacitor 4.
+
 - For Capacitor 4 projects use v4.x
 - For Capacitor 5 projects use v5.x
+- For Capacitor 6 projects use v6.x
 
 ## Installation
 
@@ -21,6 +24,7 @@ npm install @capacitor-community/image-to-text
 There is one method `detectText` that takes a filename of an image and will return the text associated with it.
 
 Add the following to your application:
+
 ```typescript
 import { Ocr, TextDetections } from '@capacitor-community/image-to-text';
 
@@ -33,7 +37,6 @@ for (let detection of data.textDetections) {
 ```
 
 The above code will convert the image file and `console.log` the text found in it.
-
 
 ## Example with Camera
 
@@ -48,16 +51,16 @@ import { Ocr, TextDetections } from '@capacitor-community/image-to-text';
 
 ```typescript
 const photo = await Camera.getPhoto({
-   quality: 90,
-   allowEditing: true,
-   resultType: CameraResultType.Uri,
-   source: CameraSource.Camera        
+  quality: 90,
+  allowEditing: true,
+  resultType: CameraResultType.Uri,
+  source: CameraSource.Camera,
 });
 
 const data: TextDetections = await Ocr.detectText({ filename: photo.path });
 
 for (let detection of data.textDetections) {
-    console.log(detection.text);
+  console.log(detection.text);
 }
 ```
 
@@ -65,8 +68,8 @@ A full sample application can be found [here](https://github.com/dtarnawsky/capa
 
 ![video of scanning a card and it being converted to text](https://user-images.githubusercontent.com/84595830/221210852-2203919a-bb43-46ed-b9bf-04d096425dcb.gif)
 
-
 ## iOS Usage
+
 No additional setup is required to use this plugin in a iOS Capacitor project.
 
 ## Android Usage
@@ -78,12 +81,13 @@ Your project must include a `google-services.json` file stored in the Android pr
 - Sign in to [console.firebase.google.com](https://console.firebase.google.com/)
 - Click on `Add Project` and follow through the steps.
 - Click the `Android` icon to create an android app.
-- Enter the `Package Name` which must match your apps package name (You can find it in `android/app/AndroidManifest.xml`). 
+- Enter the `Package Name` which must match your apps package name (You can find it in `android/app/AndroidManifest.xml`).
 - Click `Register App`
 - Download `google-services.json` and save into your project's `android/app` directory.
 
 ### Add Firebase SDK
-The sample project has this in place in its `build.gradle`  (see [here as a reference](https://github.com/dtarnawsky/capacitor-ocr-example/blob/09e7fb935f68e642d4906eb0ed002a52d1868b52/android/app/build.gradle#L47)).
+
+The sample project has this in place in its `build.gradle` (see [here as a reference](https://github.com/dtarnawsky/capacitor-ocr-example/blob/09e7fb935f68e642d4906eb0ed002a52d1868b52/android/app/build.gradle#L47)).
 
 Note: Most starter Capacitor projects are preconfigured to load `google-services.json`.
 
@@ -91,9 +95,9 @@ Note: Most starter Capacitor projects are preconfigured to load `google-services
 
 <docgen-index>
 
-* [`detectText(...)`](#detecttext)
-* [Interfaces](#interfaces)
-* [Enums](#enums)
+- [`detectText(...)`](#detecttext)
+- [Interfaces](#interfaces)
+- [Enums](#enums)
 
 </docgen-index>
 
@@ -114,18 +118,15 @@ Detect text in an image
 
 **Returns:** <code>Promise&lt;<a href="#textdetections">TextDetections</a>&gt;</code>
 
---------------------
-
+---
 
 ### Interfaces
-
 
 #### TextDetections
 
 | Prop                 | Type                         |
 | -------------------- | ---------------------------- |
 | **`textDetections`** | <code>TextDetection[]</code> |
-
 
 #### TextDetection
 
@@ -137,7 +138,6 @@ Detect text in an image
 | **`topRight`**    | <code>[number, number]</code> |
 | **`text`**        | <code>string</code>           |
 
-
 #### DetectTextOptions
 
 | Prop              | Type                                                          |
@@ -145,9 +145,7 @@ Detect text in an image
 | **`filename`**    | <code>string</code>                                           |
 | **`orientation`** | <code><a href="#imageorientation">ImageOrientation</a></code> |
 
-
 ### Enums
-
 
 #### ImageOrientation
 
@@ -166,21 +164,21 @@ Images are expected to be in portrait mode only, i.e. with text facing up. It wi
 
 iOS and Android are supported. Web is not.
 
-| Feature                          | ios                         | android                     |
-| -------------------------------- | --------------------------- | --------------------------- |
-| ML Framework                     | CoreML Vision               | Firebase MLKit              |
-| Text Detection with Still Images | Yes                         | Yes                         |
-| Detects lines of text            | Yes                         | Yes                         |
-| Bounding Coordinates for Text    | Yes                         | Yes                         |
-| Image Orientation                | Yes (Up, Left, Right, Down) | Yes (Up, Left, Right, Down) |
-| Skewed Text                      | Yes                         | Unreliable                  |
-| Rotated Text (<~ 45deg)          | Yes                         | Yes (but with noise)        |
-| On-Device                        | Yes                         | Yes                         |
+| Feature                          | ios                         | android                                                                                                              |
+| -------------------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| ML Framework                     | CoreML Vision               | Firebase MLKit                                                                                                       |
+| Text Detection with Still Images | Yes                         | Yes                                                                                                                  |
+| Detects lines of text            | Yes                         | Yes                                                                                                                  |
+| Bounding Coordinates for Text    | Yes                         | Yes                                                                                                                  |
+| Image Orientation                | Yes (Up, Left, Right, Down) | Yes (Up, Left, Right, Down)                                                                                          |
+| Skewed Text                      | Yes                         | Unreliable                                                                                                           |
+| Rotated Text (<~ 45deg)          | Yes                         | Yes (but with noise)                                                                                                 |
+| On-Device                        | Yes                         | Yes                                                                                                                  |
 | SDK/ios Version                  | ios 13.0 or newer           | Targets API level >= 16<br>Uses Gradle >= 4.1<br>com.android.tools.build:gradle >= v3.2.1<br>compileSdkVersion >= 28 |
-| | | |
-
+|                                  |                             |                                                                                                                      |
 
 ## License
+
 Hippocratic License Version 2.0.
 
 For more information, refer to LICENSE file
