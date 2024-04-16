@@ -31,7 +31,6 @@ public class TextDetector {
     var orientation: CGImagePropertyOrientation
     var detectedAlready = false
 
-
     public init(call: CAPPluginCall, image: UIImage) {
         self.call = call
         self.image = image
@@ -43,7 +42,7 @@ public class TextDetector {
         guard !detectedAlready else {
             self.call.reject("An image has already been processed for text. Please instantiate a new TextDetector object.")
             return
-         }
+        }
         self.detectedAlready = true
 
         guard let cgImage = image.cgImage else {
@@ -60,11 +59,11 @@ public class TextDetector {
         }
 
         // VNImageRequestHandler processes image analysis requests on a single image.
-        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage,orientation: orientation, options: [:])
+        let imageRequestHandler = VNImageRequestHandler(cgImage: cgImage, orientation: orientation, options: [:])
 
         DispatchQueue.global(qos: .userInitiated).async {
             do {
-                try imageRequestHandler.perform([self.textDetectionRequest])                
+                try imageRequestHandler.perform([self.textDetectionRequest])
             } catch let error as NSError {
                 print("Failed to perform image request: \(error)")
                 self.call.reject(error.description)
