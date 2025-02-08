@@ -1,3 +1,5 @@
+<p align="center"><strong>NOTE: This is a forked variant of the <code>@capacitor-community/image-to-text</code> plugin, with a few modifications.</strong></p>
+
 <p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
 <h3 align="center">Image To Text</h3>
 <p align="center"><strong><code>@capacitor-community/image-to-text</code></strong></p>
