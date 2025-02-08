@@ -18,11 +18,11 @@ class TextDetector {
             val image = InputImage.fromBitmap(bitmap, 0) // 0 = no rotation
             
             // Initialize ML Kit TextRecognizer
-            val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+            val textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
             
             // Process image with ML Kit
             textRecognizer.process(image)
-                .addOnSuccessListener { visionText ->
+                .addOnSuccessListener { visionText: Text ->
                     val detectedText = ArrayList<Any>()
                     val width = bitmap.width
                     val height = bitmap.height
@@ -62,7 +62,7 @@ class TextDetector {
                     }
                     call.resolve(JSObject().put("textDetections", JSONArray(detectedText)))
                 }
-                .addOnFailureListener { e ->
+                .addOnFailureListener { e: Exception ->
                     call.reject("ML Kit Text Recognition failed", e)
                 }
         } catch (e: Exception) {
