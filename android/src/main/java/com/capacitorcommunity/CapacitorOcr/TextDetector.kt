@@ -8,6 +8,7 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.Text
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
+import com.google.mlkit.vision.text.TextRecognizerOptions
 import org.json.JSONArray
 
 class TextDetector {
@@ -17,7 +18,7 @@ class TextDetector {
             val image = InputImage.fromBitmap(bitmap, 0) // 0 = no rotation
             
             // Initialize ML Kit TextRecognizer
-            val textRecognizer: TextRecognizer = TextRecognition.getClient()
+            val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
             
             // Process image with ML Kit
             textRecognizer.process(image)
