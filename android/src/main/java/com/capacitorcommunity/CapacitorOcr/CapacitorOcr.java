@@ -10,8 +10,6 @@ import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
-import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata;
-import java.io.File;
 import java.io.IOException;
 
 @NativePlugin

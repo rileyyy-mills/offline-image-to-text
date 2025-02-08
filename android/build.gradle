@@ -14,7 +14,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.7.2'
-        classpath 'com.google.gms:google-services:4.4.2'
+        // REMOVED FIREBASE GOOGLE-SERVICES PLUGIN
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -54,7 +54,6 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':capacitor-android')
@@ -64,7 +63,12 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
     implementation "androidx.core:core-ktx:$androidxCoreVersion"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.google.firebase:firebase-iid:21.1.0'
-    implementation 'com.google.firebase:firebase-analytics:17.2.3'
-    implementation 'com.google.firebase:firebase-ml-vision:24.0.1'
+
+    // REMOVED FIREBASE DEPENDENCIES:
+    // implementation 'com.google.firebase:firebase-iid:21.1.0'
+    // implementation 'com.google.firebase:firebase-analytics:17.2.3'
+    // implementation 'com.google.firebase:firebase-ml-vision:24.0.1'
+
+    // ADD ML KIT STANDALONE SDK:
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:19.0.1' 
 }
