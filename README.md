@@ -14,7 +14,7 @@
 ## Installation
 
 ```
-npm install https://github.com/rileyyy-mills/offline-image-to-text.git
+npm install https://github.com/rileyyy-mills/offline-image-to-text.git#master
 ```
 
 ## Usage
